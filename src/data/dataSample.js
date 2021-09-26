@@ -1,0 +1,68 @@
+export const DataSample = [
+    {
+        id:'1',
+    firstName: "امیرمحمد",
+    lastName: "کوهجانی",
+    age: "26",
+    typeOfUser: ["مدیر"],
+    address: "بلوار طبرسی،چهاراه برق،خیابان شیخ صدوق 3 ، پلاک 218",
+    email: "amir.kohjani20@gmail.com",
+    phone: "09366690202",
+    lessons:['-'],
+    imgAdderss: 'https://i.ibb.co/7YXgg5t/photo-2021-08-20-23-12-48-Copy.jpg',
+    typeOfTheach: "-",
+
+    discription: "سلام من یک دانشجوی خوشحال هستم ،کمر بندم نبستم ",
+    grade: "کارشناسی",
+    post:'مدیر فنی/برنامه نویس'
+},
+    {
+        id:'2',
+    firstName: "پارسا",
+    lastName: "کوهجانی",
+    age: "6",
+    typeOfUser:[ "دانش آموز"],
+    lessons:['زبان انگلیسی','ریاضیات'],
+    address: "بلوار طبرسی،چهاراه برق،خیابان شیخ صدوق 3 ، پلاک 218",
+    email: "-",
+    phone: "09366690202",
+    imgAdderss: 'https://i.ibb.co/7YXgg5t/photo-2021-08-20-23-12-48-Copy.jpg',
+    typeOfTheach: "-",
+    discription: "سلام من یک دانش آموز خوشحال هستم ،کمر بندم نبستم ",
+    grade: "دبستان",
+    post:'-'
+},
+    {
+        id:'3',
+    firstName: ["امیرمحمد"],
+    lastName: "حفار",
+    age: "26",
+    typeOfUser:[ "استاد"],
+    lessons:['زبان انگلیسی','ریاضیات','زبان عربی'],
+    address: "بلوار طبرسی،چهاراه برق،خیابان شیخ صدوق 3 ، پلاک 218",
+    email: "amir.hafar@gmail.com",
+    phone: "09366690202",
+    imgAdderss: 'https://i.ibb.co/K7fbGNC/hatar.jpg',
+    typeOfTheach: "-",
+    discription: "سلام من یک دانشجوی خوشحال هستم ،کمر بندم نبستم ",
+    grade: "کارشناسی",
+    post:'مدیر فنی/برنامه نویس'
+},
+    {
+        id:'4',
+    firstName: "مهدی",
+    lastName: "سوزنچی",
+    age: "26",
+    typeOfUser: ["دانشجو"],
+     lessons:['زبان انگلیسی','ریاضیات'],
+    address: "بلوار طبرسی،چهاراه برق،خیابان شیخ صدوق 3 ، پلاک 218",
+    email: "amir.kohjani20@gmail.com",
+    phone: "09366690202",
+    imgAdderss: 'https://i.ibb.co/5M8Bf2m/sozanchi.jpg',
+    typeOfTheach: "-",
+    discription: "سلام من یک دانشجوی خوشحال هستم ،کمر بندم نبستم ",
+    grade: "کارشناسی",
+    post:'مدیر فنی/برنامه نویس'
+},
+
+]
