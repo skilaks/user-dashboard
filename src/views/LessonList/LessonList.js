@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 // @material-ui/core components
 import AddIcon from "@material-ui/icons/Add";
 
@@ -14,6 +14,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import UserTable from "components/Table/UserTable.js";
 import Columns from "components/Table/Columns/Lessons.js"
+import Button from "components/CustomButtons/Button.js"
 import AddLesson from "./AddLesson.js";
 import { lessonsDataSample, lessonsName } from '../../data/lessonDataSample'
 
@@ -60,32 +61,34 @@ export default function LessonList() {
   // }, [])
   const classes = useStyles();
   const [columns, setColumns] = useState(Columns(lessonsName));
-  const [Data,setData] = useState(lessonsDataSample)
+  const [Data, setData] = useState(lessonsDataSample)
   const [openModal, setOpenModal] = React.useState(false);
   const submitLesson = (lesson) => {
     setData(lesson)
-    console.log(Data)
     setOpenModal(false)
   }
 
+  const TableCard = () => {
+    return 
+  }
   return (
     <GridContainer>
-
       <GridItem xs={12} sm={12} md={12}>
-        <Card >
-          <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}> لیست دروس   </h4>
-
-          </CardHeader>
-          <CardBody>
-            <UserTable columns={columns} data={lessonsDataSample} />
-          </CardBody>
-        </Card>
+      <Card >
+      <CardHeader color="primary">
+        <h4 className={classes.cardTitleWhite}> لیست دروس   </h4>
+      </CardHeader>
+      <CardBody>
+        <UserTable columns={columns} data={lessonsDataSample} />
+        {console.log(Data)}
+      </CardBody>
+    </Card>
         <CustomFab size="small" color="secondary" label="add" onClick={() => setOpenModal(true)}>
           <AddIcon />
         </CustomFab>
+      
         <CustomModal open={openModal} close={() => setOpenModal(false)}>
-          <AddLesson submit={submitLesson} />
+          <AddLesson lesson={submitLesson} />
         </CustomModal>
       </GridItem>
 
@@ -93,3 +96,5 @@ export default function LessonList() {
     </GridContainer>
   );
 }
+
+// export default LessonList;

@@ -19,6 +19,7 @@ export default function CustomInput(props) {
   const {
     formControlProps,
     labelText,
+    endAdornment,
     id,
     value,
     labelProps,
@@ -54,6 +55,7 @@ export default function CustomInput(props) {
     <FormControl
       {...formControlProps}
       className={formControlProps.className + " " + classes.formControl}
+     
     >
       {labelText !== undefined ? (
         <InputLabel
@@ -71,6 +73,7 @@ export default function CustomInput(props) {
           disabled: classes.disabled,
           underline: underlineClasses,
         }}
+        endAdornment={endAdornment}
         type={type}
         onChange={onChange}
         id={id}
@@ -94,6 +97,7 @@ CustomInput.propTypes = {
   inputProps: PropTypes.object,
   value: PropTypes.string,
   formControlProps: PropTypes.object,
+  endAdornment : PropTypes.string,
   error: PropTypes.bool,
   success: PropTypes.bool,
   onChange: PropTypes.func,

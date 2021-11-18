@@ -53,5 +53,10 @@ const tasksStyle = {
     color: dangerColor[0],
     boxShadow: "none",
   },
+  notTasksMsg:{
+    textAlign: "center",
+    color:grayColor[1],
+    marginTop:"6rem"
+  }
 };
 export default tasksStyle;

@@ -33,6 +33,10 @@ const rtlStyle = {
       marginRight: "3px",
       marginLeft: "3px",
     },
+    "& button" :{
+      marginLeft: "10px",
+      color: grayColor[0],
+    }
   },
   cardCategory: {
     color: grayColor[0],
@@ -82,6 +86,9 @@ const rtlStyle = {
       fontWeight: "400",
       lineHeight: "1",
     },
+  },
+  footerBtn:{
+    marginLeft:'5px'
   },
   btn: {
     fontFamily: "'Yekan', 'Helvetica', 'Arial', sans-serif",

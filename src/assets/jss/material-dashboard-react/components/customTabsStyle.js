@@ -42,6 +42,7 @@ const customTabsStyle = {
     transition: "0.2s background-color 0.1s",
   },
   tabWrapper: {
+
     display: "inline-block",
     minHeight: "unset !important",
     minWidth: "unset !important",
@@ -49,6 +50,7 @@ const customTabsStyle = {
     height: "unset !important",
     maxWidth: "unset !important",
     maxHeight: "unset !important",
+    fontFamily:'Yekan',
     fontWeight: "500",
     fontSize: "12px",
     marginTop: "1px",

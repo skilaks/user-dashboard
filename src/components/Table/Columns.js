@@ -1,6 +1,12 @@
 import React from "react";
 import { Tag, Button } from "antd"
+import { withStyles } from '@material-ui/core/styles';
+
 import { Link } from 'react-router-dom'
+const CustomTag = withStyles({
+    root: { borderRadius: '10px', }
+
+})((props) => <Tag  {...props} />);
 export default function Columns(type) {
 
     const columns = '';
@@ -249,6 +255,34 @@ export default function Columns(type) {
             ,
         },
     ];
+    const BestUser = [
+        {
+            title: "نام",
+            dataIndex: "firstName",
+            key: "firstName",
+        },
+        {
+            title: "نام خانوادگی",
+            dataIndex: "lastName",
+            key: "lastName",
+        },
+        {
+            title: "سن",
+            dataIndex: "age",
+            key: "age",
+        },
+
+        {
+            title: "نوع کاربری",
+            dataIndex: "typeOfUser",
+            key: "typeOfUser",
+            render: (text, record) => (
+                <CustomTag color={text === 'مدیر' ? 'blue' : 'green'} >
+                    {text}
+                </CustomTag>
+            ),
+        }
+    ]
     switch (type) {
         case 'All': return All;
 
@@ -263,6 +297,9 @@ export default function Columns(type) {
 
             break;
         case 'Admin': return Admin;
+
+            break;
+        case 'BestUser': return BestUser;
 
             break;
 

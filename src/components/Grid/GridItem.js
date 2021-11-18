@@ -9,15 +9,19 @@ const styles = {
   grid: {
     padding: "0 15px !important",
   },
+  justifyContentCenter : {
+    display: "flex",
+    justifyContent : "center"
+  }
 };
 
 const useStyles = makeStyles(styles);
 
 export default function GridItem(props) {
   const classes = useStyles();
-  const { children, ...rest } = props;
+  const { children,justifyContentCenter, ...rest } = props;
   return (
-    <Grid item {...rest} className={classes.grid}>
+    <Grid item {...rest} className={classes.grid + " "+ justifyContentCenter ? classes.justifyContentCenter : ''}>
       {children}
     </Grid>
   );
@@ -25,4 +29,5 @@ export default function GridItem(props) {
 
 GridItem.propTypes = {
   children: PropTypes.node,
+  justifyContentCenter : PropTypes.bool,
 };
