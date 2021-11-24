@@ -10,22 +10,26 @@ import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import Button from "components/CustomButtons/Button.js";
 import CustomDatePiker from 'components/CustomDatePiker/CustomDatePiker.js';
+import PN from "persian-number"
+
 export default function AddLesson(prop) {
-    
+
     const [lessonName, setLessonName] = useState('')
     const [teacherName, setTeacherName] = useState('')
     const [capacity, setCapacity] = useState('')
     const [courseDuration, setCourseDuration] = useState('')
+    const [coursePrice, setCoursePrice] = useState('')
     const [numberOfSessions, setNumberOfSessions] = useState('')
+    const [courseScore, setCourseScore] = useState('')
     const [type, setType] = useState('')
     const [status, setStatus] = useState('')
     const [courseStartDate, setCourseStartDate] = useState('')
     const [user, setUser] = useState({})
     const submitHandler = () => {
-        
-        prop.lesson({ lessonName, teacherName, capacity, courseDuration,numberOfSessions, courseStartDate,typeOfCourse: type, status });
+
+        prop.lesson({ lessonName, teacherName, capacity, courseScore, courseDuration, coursePrice, numberOfSessions, courseStartDate, typeOfCourse: type, status });
     }
-    
+
     const statusItems = [
         {
             value: 'ارائه شده',
@@ -111,7 +115,21 @@ export default function AddLesson(prop) {
                                     formControlProps={{
                                         fullWidth: true
                                     }}
-                                    
+
+                                />
+                            </GridItem>
+                            <GridItem xs={3} sm={6} md={2}>
+                                <CustomInput
+                                    labelText="قیمت دوره"
+                                    type="number"
+                                    endAdornment={coursePrice > 0 ? <InputAdornment position="end">تومان</InputAdornment> : ''}
+                                    id='CoursePrice'
+                                    onChange={(e) => setCoursePrice(e.target.value)}
+                                    value={coursePrice}
+                                    formControlProps={{
+                                        fullWidth: true
+                                    }}
+
                                 />
                             </GridItem>
                             <GridItem xs={3} sm={6} md={2}>
@@ -125,17 +143,31 @@ export default function AddLesson(prop) {
                                     formControlProps={{
                                         fullWidth: true
                                     }}
-                                    
+
+                                />
+                            </GridItem>
+                            <GridItem xs={3} sm={6} md={2}>
+                                <CustomInput
+                                    labelText="امتیاز دوره"
+                                    type="number"
+                                    endAdornment={courseScore > 0 ? <InputAdornment position="end">امتیاز</InputAdornment> : ''}
+                                    id='courseScore'
+                                    onChange={(e) => setCourseScore(e.target.value)}
+                                    value={courseScore}
+                                    formControlProps={{
+                                        fullWidth: true
+                                    }}
+
                                 />
                             </GridItem>
                             <GridItem xs={3} sm={6} md={5} justifyContentCenter>
-                                
-                            <CustomDatePiker labelText='تاریخ شروع دوره' onSubmit={(e)=>setCourseStartDate(e.value._d)} success/>
+
+                                <CustomDatePiker labelText='تاریخ شروع دوره' onSubmit={(e) => setCourseStartDate(e.value._d)} success />
                             </GridItem>
-                            
+
                             <GridItem xs={9} sm={6} md={2}>
-                                
-                                 <SelectItem
+
+                                <SelectItem
                                     label='نوع'
                                     id='type'
                                     onChange={(e) => setType(e.target.value)}
@@ -145,7 +177,7 @@ export default function AddLesson(prop) {
                                 />
                             </GridItem>
                             <GridItem xs={9} sm={6} md={2}>
-                               
+
                                 <SelectItem
                                     label='وضعیت'
                                     id='status'

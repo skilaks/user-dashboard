@@ -29,6 +29,7 @@ import Language from "@material-ui/icons/Language";
 // import DashboardPage from "views/Dashboard/Dashboard.js";
 import SelfProfile from "views/UserProfile/SelfProfile.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
+import LessonProfle from "views/LessonProfile/LessonProfile.js"
 import TableList from "views/UsersList/UsersList.js";
 import LessonList from "views/LessonList/LessonList.js";
 import Typography from "views/Typography/Typography.js";
@@ -64,6 +65,13 @@ const dashboardRoutes = [
     name: "پروفایل",
     rtlName: "پروفایل",
     component: UserProfile,
+    sidbarShow:false
+  },
+  {
+    path: "/lessonProfile/:id",
+    name: " پروفایل درس",
+    rtlName: " پروفایل درس",
+    component: LessonProfle,
     sidbarShow:false
   },
 
@@ -117,16 +125,16 @@ const dashboardRoutes = [
   //   sidbarShow: true
 
   // },
-  // {
-  //   path: "/notifications",
-  //   name: "Notifications",
-  //   rtlName: "إخطارات",
-  //   icon: Notifications,
-  //   component: NotificationsPage,
-  //   layout: "",
-  //   sidbarShow: true
+  {
+    path: "/notifications",
+    name: "Notifications",
+    rtlName: "إخطارات",
+    icon: Notifications,
+    component: NotificationsPage,
+    layout: "",
+    sidbarShow: true
 
-  // },
+  },
   // {
   //   path: "/",
   //   name: "RTL Support",

@@ -1,6 +1,7 @@
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 import { Tag, Button } from "antd"
+import PN from "persian-number"
 import {
     SyncOutlined,
     ClockCircleOutlined,
@@ -19,6 +20,9 @@ export default function Columns(lessons) {
             dataIndex: "code",
             key: "code",
             sorter: (a, b) => a.code - b.code,
+            render:(text)=>(
+                <h5>{PN.convertEnToPe(text)}</h5>
+            )
         },
         {
             title: "نام درس",
@@ -31,6 +35,9 @@ export default function Columns(lessons) {
             onFilter: (value, record) => record.name.indexOf(value) === 0,
             sorter: (a, b) => a.lessonName.length - b.lessonName.length,
             sortDirections: ['descend'],
+            render:(text)=>(
+                <>{PN.convertEnToPe(text)}</>
+            )
         },
         {
             title: "نام استاد",
@@ -43,6 +50,18 @@ export default function Columns(lessons) {
             dataIndex: "capacity",
             key: "capacity",
             sorter: (a, b) => a.capacity - b.capacity,
+            render:(text)=>
+                (<>{PN.convertEnToPe(text)} نفر</>)
+        },
+        {
+            title: "قیمت",
+            dataIndex: "price",
+            key: "price",
+            sorter: (a, b) => a.price - b.price,
+            render:(text)=>
+                
+                (< >{PN.convertEnToPe(PN.sliceNumber(text))}</>)
+            
         },
         {
             title: "وضعیت",

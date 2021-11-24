@@ -71,7 +71,7 @@ const useStyles = makeStyles(styles);
 const setDataCurentOnTable = (data, typeofTable, callback) => {
   fillterdata(data, typeofTable, callback);
 }
-console.log(DashboardService.getChartsInformation())
+
 export default function RTLPage() {
   const classes = useStyles();
   const [bestUserData,setBestUserData]= useState([])

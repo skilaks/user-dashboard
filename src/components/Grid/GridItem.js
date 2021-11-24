@@ -8,10 +8,12 @@ import Grid from "@material-ui/core/Grid";
 const styles = {
   grid: {
     padding: "0 15px !important",
+    marginLeft: "auto !important",
   },
   justifyContentCenter : {
     display: "flex",
-    justifyContent : "center"
+    justifyContent : "center",
+    marginLeft: "auto !important",
   }
 };
 
@@ -21,7 +23,7 @@ export default function GridItem(props) {
   const classes = useStyles();
   const { children,justifyContentCenter, ...rest } = props;
   return (
-    <Grid item {...rest} className={classes.grid + " "+ justifyContentCenter ? classes.justifyContentCenter : ''}>
+    <Grid item {...rest} className={classes.grid }>
       {children}
     </Grid>
   );
