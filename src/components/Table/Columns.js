@@ -1,7 +1,7 @@
 import React from "react";
-import { Tag, Button } from "antd"
+import { Tag, Badge,Space } from "antd"
 import { withStyles } from '@material-ui/core/styles';
-
+import PN from "persian-number"
 import { Link } from 'react-router-dom'
 const CustomTag = withStyles({
     root: { borderRadius: '10px', }
@@ -13,8 +13,20 @@ export default function Columns(type) {
     const All = [
         {
             title: "نام",
-            dataIndex: "firstName",
+            // dataIndex: "firstName",
             key: "firstName",
+            render: (text, record) => {
+                return (<>
+  
+                    <Badge dot={text.newTasks} />
+
+                    {text.firstName}
+           
+                </>
+
+
+                )
+            }
         },
         {
             title: "نام خانوادگی",
@@ -25,6 +37,11 @@ export default function Columns(type) {
             title: "سن",
             dataIndex: "age",
             key: "age",
+            render: (age) =>
+                    <>
+                        {PN.convertEnToPe(age)}
+                    </>
+            
         },
         {
             title: "نوع کاربری",
@@ -38,10 +55,12 @@ export default function Columns(type) {
                         if (typeOfUser === "دانشجو") {
                             color = "volcano";
                         }
-                        return (
+                        return (<>
                             <Tag color={color} key={typeOfUser}>
-                                {typeOfUser.toUpperCase()}
+                                {typeOfUser}
                             </Tag>
+
+                        </>
                         );
                     })}
                 </>
@@ -52,26 +71,35 @@ export default function Columns(type) {
             title: "عملیات",
             key: "action",
             render: (text, record) =>
-
-                // <Button type="primary" onClick={  <Redirect  to="/userProfile" /> }>پروفایل</Button>
+                    <>
                 <Link
                     to={"/userProfile/" + text.id}
-
                 >
-                                                                                
-
                     پروفایل
+                    {  ! text.confirmation &&   <Tag color="red" >نیاز به تایید</Tag>}
+
                 </Link>
-
-
+               
+                  </>
+                    
             ,
         },
     ];
     const StudentCollegian = [
         {
             title: "نام",
-            dataIndex: "firstName",
+            // dataIndex: "firstName",
             key: "firstName",
+            render: (text, record) => {
+                return (<>
+                    <Badge dot={text.newTasks} />
+
+                    {text.firstName}
+                </>
+
+
+                )
+            }
         },
         {
             title: "نام خانوادگی",
@@ -93,7 +121,7 @@ export default function Columns(type) {
                         let color = lesson.length > 4 ? "blue" : "green";
                         return (
                             <Tag color={color} key={lesson}>
-                                {lesson.toUpperCase()}
+                                {lesson}
                             </Tag>
                         );
                     })}
@@ -120,8 +148,18 @@ export default function Columns(type) {
     const Student = [
         {
             title: "نام",
-            dataIndex: "firstName",
+            // dataIndex: "firstName",
             key: "firstName",
+            render: (text, record) => {
+                return (<>
+                    <Badge dot={text.newTasks} />
+
+                    {text.firstName}
+                </>
+
+
+                )
+            }
         },
         {
             title: "نام خانوادگی",
@@ -143,7 +181,7 @@ export default function Columns(type) {
                         let color = lesson.length > 4 ? "blue" : "green";
                         return (
                             <Tag color={color} key={lesson}>
-                                {lesson.toUpperCase()}
+                                {lesson}
                             </Tag>
                         );
                     })}
@@ -170,8 +208,18 @@ export default function Columns(type) {
     const Teacher = [
         {
             title: "نام",
-            dataIndex: "firstName",
+            // dataIndex: "firstName",
             key: "firstName",
+            render: (text, record) => {
+                return (<>
+                    <Badge dot={text.newTasks} />
+
+                    {text.firstName}
+                </>
+
+
+                )
+            }
         },
         {
             title: "نام خانوادگی",
@@ -193,7 +241,7 @@ export default function Columns(type) {
                         let color = lesson.length > 4 ? "blue" : "green";
                         return (
                             <Tag color={color} key={lesson}>
-                                {lesson.toUpperCase()}
+                                {lesson}
                             </Tag>
                         );
                     })}
@@ -220,8 +268,18 @@ export default function Columns(type) {
     const Admin = [
         {
             title: "نام",
-            dataIndex: "firstName",
+            // dataIndex: "firstName",
             key: "firstName",
+            render: (text, record) => {
+                return (<>
+                    <Badge dot={text.newTasks} />
+
+                    {text.firstName}
+                </>
+
+
+                )
+            }
         },
         {
             title: "نام خانوادگی",
@@ -258,8 +316,18 @@ export default function Columns(type) {
     const BestUser = [
         {
             title: "نام",
-            dataIndex: "firstName",
+            // dataIndex: "firstName",
             key: "firstName",
+            render: (text, record) => {
+                return (<>
+                    <Badge dot={text.newTasks} />
+
+                    {text.firstName}
+                </>
+
+
+                )
+            }
         },
         {
             title: "نام خانوادگی",

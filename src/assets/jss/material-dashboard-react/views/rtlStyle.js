@@ -13,6 +13,11 @@ const rtlStyle = {
     width: "16px",
     height: "16px",
   },
+  hoverIcon:{
+    "& hover":{
+      backgroundColor: "red"
+    }
+  },
   stats: {
     color: grayColor[0],
     display: "inline-flex",
@@ -46,6 +51,10 @@ const rtlStyle = {
     paddingTop: "10px",
     marginBottom: "0",
   },
+  cardHeader:{
+    display: "flex",
+    justifyContent: "Space-between",
+  },
   cardCategoryWhite: {
     color: "rgba(" + hexToRgb(whiteColor) + ",.62)",
     margin: "0",
@@ -59,6 +68,8 @@ const rtlStyle = {
   cardTitle: {
     color: grayColor[2],
     marginTop: "0px",
+    marginLeft:'1rem',
+    alignSelf: "center",
     minHeight: "auto",
     fontWeight: "300",
     fontFamily: "'Yekan', 'Helvetica', 'Arial', sans-serif",
@@ -74,7 +85,7 @@ const rtlStyle = {
   cardTitleWhite: {
     color: whiteColor,
     marginTop: "0px",
-   
+   marginLeft:'1rem',
 
     minHeight: "auto",
     fontWeight: "300",
@@ -93,6 +104,14 @@ const rtlStyle = {
   btn: {
     fontFamily: "'Yekan', 'Helvetica', 'Arial', sans-serif",
     fontSize: "medium",
+  },
+  chipTitlewhite: {
+
+  },
+  tableResponsive: {
+    marginTop:'1rem',
+    width: "100%",
+    overflowX: "auto",
   },
 };
 

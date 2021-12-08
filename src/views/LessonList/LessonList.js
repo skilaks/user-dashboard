@@ -69,24 +69,23 @@ export default function LessonList() {
   }
 
   const TableCard = () => {
-    return 
+    return
   }
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
-      <Card >
-      <CardHeader color="primary">
-        <h4 className={classes.cardTitleWhite}> لیست دروس   </h4>
-      </CardHeader>
-      <CardBody>
-        <UserTable columns={columns} data={lessonsDataSample} />
-        {console.log(Data)}
-      </CardBody>
-    </Card>
+        <Card >
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}> لیست دروس   </h4>
+          </CardHeader>
+          <CardBody>
+            <UserTable columns={columns} data={lessonsDataSample} />
+          </CardBody>
+        </Card>
         <CustomFab size="small" color="secondary" label="add" onClick={() => setOpenModal(true)}>
           <AddIcon />
         </CustomFab>
-      
+
         <CustomModal open={openModal} close={() => setOpenModal(false)}>
           <AddLesson lesson={submitLesson} />
         </CustomModal>

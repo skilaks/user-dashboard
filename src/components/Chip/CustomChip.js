@@ -18,7 +18,7 @@ export default  function  CustomChip(props) {
 
   return (
 
-      <ChipWithStyle variant="outlined"  label={label} color={color||'secondary'} avatar={avatar||null} icon={icon||null} {...rest}  />
+      <ChipWithStyle variant="outlined"  label={label} color={color||'info'} avatar={avatar||null} icon={icon||null} {...rest}  />
     
   );
 }
