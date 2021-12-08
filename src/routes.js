@@ -125,16 +125,16 @@ const dashboardRoutes = [
   //   sidbarShow: true
 
   // },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    rtlName: "إخطارات",
-    icon: Notifications,
-    component: NotificationsPage,
-    layout: "",
-    sidbarShow: true
+  // {
+  //   path: "/notifications",
+  //   name: "Notifications",
+  //   rtlName: "إخطارات",
+  //   icon: Notifications,
+  //   component: NotificationsPage,
+  //   layout: "",
+  //   sidbarShow: true
 
-  },
+  // },
   // {
   //   path: "/",
   //   name: "RTL Support",

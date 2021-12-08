@@ -21,6 +21,7 @@ import { lessonsDataSample } from '../../data/lessonDataSample'
 // import avatar from "assets/img/faces/marc.jpg";
 import styles from "assets/jss/material-dashboard-react/views/rtlStyle.js";
 import { TableTags } from "components/Tag/TableTags.js";
+import UserTable from "components/Table/UserTable";
 
 const useStyles = makeStyles(styles);
 export default function UserProfile(prop) {
@@ -154,10 +155,59 @@ export default function UserProfile(prop) {
             {/* {alert.show&&
             <CustomAlert show={alert.show} message={alert.message} variant={alert.variant} severity={alert.sever}/>} */}
                 <GridContainer>
+ {/************************** confirmation container  *********************/}
+ { !confirmation && <GridItem xs={12} sm={12} md={12}>
+                        <Card>
+                            <CardHeader color="danger">
+                                <h4 className={classes.cardTitleWhite}>تاییدیه کلاس</h4>
+                            </CardHeader>
+                            <CardBody>
+                                <h4>آیا این کلاس با مشخصات زیر مورد تایید میباشد ؟</h4>
+                                <GridContainer>
+                                    <GridItem xs={6} sm={2} md={2}>
+                                        <CustomInput
+                                            labelText="امتیاز این کلاس "
+                                            id="scoin"
 
+                                            onChange={(e) => setScoin(e.target.value)}
+                                            endAdornment={scoin > 0 ? <InputAdornment position="end">Scoin</InputAdornment> : ''}
+
+                                            value={PN.convertEnToPe(scoin)}
+                                            formControlProps={{
+                                                fullWidth: true,
+                                            }}
+                                            inputProps={{
+                                                disabled: false,
+                                            }}
+                                        />
+                                    </GridItem>
+                                </GridContainer>
+                            </CardBody>
+                            <CardFooter>
+                                <GridItem xs={12} sm={12} md={12}>
+                                    <Button
+                                        className={classes.btn}
+                                        color="info"
+                                     onClick={()=>handlerconfirmation(true)}
+                                    >
+                                        بله
+                                    </Button>
+                                    <Button
+                                        className={classes.btn}
+                                        color="danger"
+                                     onClick={()=>handlerconfirmation(false)}
+                                    >
+                                        خیر!!!
+                                    </Button>
+                                </GridItem>
+                            </CardFooter>
+                        </Card>
+                    </GridItem>
+}
+{/* --------------------------------------------------------------------------- */}
                     <GridItem xs={12} sm={12} md={12}>
                         <Card profile>
-                            <CardBody profile>
+                            <CardBody profile color="primary">
                                 <h4 className={classes.cardTitle}>{PN.convertEnToPe(lessonName)}</h4>
                             </CardBody>
                         </Card>
@@ -323,23 +373,14 @@ export default function UserProfile(prop) {
                             </CardHeader>
                             <CardBody>
                                 <GridContainer>
+                                <h5 className={classes.cardTitle}>برنامه کلاسی</h5>
+
                                     <GridItem xs={12} sm={12} md={12}>
-
-
-                                        <TableTags
-                                            tags={schedule}
-                                            labelText='برنامه کلاسی'
-                                            closable={!scheduleEditMode}
-                                        />
-
                                     </GridItem>
                                     <Divider />
+                                    <h5 className={classes.cardTitle}>لیست افراد</h5>
                                     <GridItem xs={12} sm={12} md={12}>
-                                        <TableTags
-                                            labelText={'لیست افراد شرکت کننده '}
-                                            tags={students}
-                                            closable={!scheduleEditMode}
-                                        />
+                                       <UserTable />
                                     </GridItem>
                                 </GridContainer>
                             </CardBody>
@@ -480,55 +521,7 @@ export default function UserProfile(prop) {
                             </CardFooter>
                         </Card>
                     </GridItem>
-                     {/************************** confirmation container  *********************/}
-                  { !confirmation && <GridItem xs={12} sm={12} md={12}>
-                        <Card>
-                            <CardHeader color="danger">
-                                <h4 className={classes.cardTitleWhite}>تاییدیه کلاس</h4>
-                            </CardHeader>
-                            <CardBody>
-                                <h4>آیا این کلاس با مشخصات زیر مورد تایید میباشد ؟</h4>
-                                <GridContainer>
-                                    <GridItem xs={6} sm={2} md={2}>
-                                        <CustomInput
-                                            labelText="امتیاز این کلاس "
-                                            id="scoin"
-
-                                            onChange={(e) => setScoin(e.target.value)}
-                                            endAdornment={scoin > 0 ? <InputAdornment position="end">Scoin</InputAdornment> : ''}
-
-                                            value={PN.convertEnToPe(scoin)}
-                                            formControlProps={{
-                                                fullWidth: true,
-                                            }}
-                                            inputProps={{
-                                                disabled: false,
-                                            }}
-                                        />
-                                    </GridItem>
-                                </GridContainer>
-                            </CardBody>
-                            <CardFooter>
-                                <GridItem xs={12} sm={12} md={12}>
-                                    <Button
-                                        className={classes.btn}
-                                        color="info"
-                                     onClick={()=>handlerconfirmation(true)}
-                                    >
-                                        بله
-                                    </Button>
-                                    <Button
-                                        className={classes.btn}
-                                        color="danger"
-                                     onClick={()=>handlerconfirmation(false)}
-                                    >
-                                        خیر!!!
-                                    </Button>
-                                </GridItem>
-                            </CardFooter>
-                        </Card>
-                    </GridItem>
-}
+                    
                 </GridContainer>
             </div>)
     );

@@ -73,7 +73,7 @@ export default function Notifications() {
           setTL(true);
           setTimeout(function () {
             setTL(false);
-          }, 6000);
+          }, 100);
         }
         break;
       case "tc":
@@ -271,7 +271,7 @@ export default function Notifications() {
                   place="tr"
                   color="info"
                   icon={AddAlert}
-                  message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                  message="سلام به اسکیلاس خوش"
                   open={tr}
                   closeNotification={() => setTR(false)}
                   close

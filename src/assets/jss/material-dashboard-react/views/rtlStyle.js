@@ -113,6 +113,9 @@ const rtlStyle = {
     width: "100%",
     overflowX: "auto",
   },
+  customChips: {
+    marginLeft:'10px'
+  }
 };
 
 export default rtlStyle;
