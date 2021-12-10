@@ -3,36 +3,46 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Divider } from 'antd'
 import PN from 'persian-number'
+//-----icons---------------
+import AddIcon from "@material-ui/icons/Add";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 import InputAdornment from '@material-ui/core/InputAdornment';
-
+import CustomChip from "components/Chip/CustomChip.js"
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
-import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-import CustomAlert from "components/CustomAlert/CustomAlert.js"
+import CustomFab from 'components/Fab/CustomFab.js';
+import CustomModal from 'components/Modal/CustomModal.js';
+import AddScheduleModal from "./components/AddScheduleModal";
 // sample data for test
+import Columns from "components/Table/Columns/PersonOfLesson.js";
 import { lessonsDataSample } from '../../data/lessonDataSample'
 // import avatar from "assets/img/faces/marc.jpg";
 import styles from "assets/jss/material-dashboard-react/views/rtlStyle.js";
 import { TableTags } from "components/Tag/TableTags.js";
 import UserTable from "components/Table/UserTable";
+//-----services--------------------------------
+import { UserService } from "../../Services/UserService.js"
+import AddStudentModal from "./components/AddStudentModal";
+import { ContactsOutlined } from "@material-ui/icons";
 
 const useStyles = makeStyles(styles);
 export default function UserProfile(prop) {
-
+    const daysOfWeek = ['شنبه', 'یک شنبه', 'دو شنبه', 'سه شنبه', 'چهار شنبه', 'پنج شنبه']
     const [loading, setLoading] = useState(true)
     const [lessonCode, setLessonCode] = useState(prop.match.params.id)
+    const [users, setUsers] = useState();
+    const [dataStudentTable, setDataStudentTable] = useState();
     useEffect(() => {
 
         // use of services for get data from server
-
-
+    console.log('reload')
+        UserService.getAllUsers(users => setUsers(users))
 
         lessonsDataSample.forEach((lesson) => {
             if (lesson.code === lessonCode) {
@@ -44,9 +54,12 @@ export default function UserProfile(prop) {
         })
         // setData(lessonsDataSample.filter(lesson => lesson.code === lessonCode))
 
-    }, [lessonCode]);
+    }, [lessonCode,students]);
 
     const classes = useStyles();
+    const [openScheduleModal, setOpenScheduleModal] = useState(false);
+    const [openStudentModal,setOpenStudentModal] = useState(false);
+    const [columns, setColumns] = useState(Columns(users))
     const [profileEditMode, setProfileEditeMode] = useState(true);
     const [scheduleEditMode, setScheduleEditeMode] = useState(true);
     const [financialEditMode, setFinancialEditeMode] = useState(true);
@@ -69,7 +82,7 @@ export default function UserProfile(prop) {
     const [numberOfSessions, setNumberOfSessions] = useState();
     const [grade, setGrade] = useState();
     const [confirmation, setConfirmation] = useState();
-    const [alert, setAlert] = useState({show:false});
+    const [alert, setAlert] = useState({ show: false });
 
     const editProfileHandler = () => {
         setEditeMode(false);
@@ -94,6 +107,7 @@ export default function UserProfile(prop) {
         setNetProfit(le.netProfit || 'تعیین نشده')
         setDepositTeacher(le.depositTeacher || 'تعیین نشده')
         setConfirmation(le.confirmation)
+        
         students ? setGrossProfit(students.length * price) : setGrossProfit(le.grossProfit || 'تعیین نشده');
 
     }
@@ -132,31 +146,38 @@ export default function UserProfile(prop) {
             setFinancialEditeMode(true)
         }
     }
-    const handlerconfirmation = (confrim)=>{
-        if(confrim){
+    const handlerconfirmation = (confrim) => {
+        if (confrim) {
             //send to service true
             setConfirmation(!confirmation)
-            setAlert({show: true, message:'کلاس با موفقیت تایید شد',variant:'fill',severity:"success"})
+            setAlert({ show: true, message: 'کلاس با موفقیت تایید شد', variant: 'fill', severity: "success" })
         }
-           
-            
+
+
         else {
             //send to service false
             setConfirmation(!confirmation)
-            setAlert({show: true, message:'کلاس مورد تایید قرار نگرفت',variant:'fill',severity:"warning"})
+            setAlert({ show: true, message: 'کلاس مورد تایید قرار نگرفت', variant: 'fill', severity: "warning" })
 
-        
+
 
         }
+    }
+    const addStudentHandler = (nCode) => {
+        let student = {}
+        UserService.getUserByNationalCode(nCode,(user) => {
+            student = {nCode: nCode, scoreLesson: '0', scoreTeacher: '0', numberOfAbsences: '0' }
+            students.push(student);
+            console.log(students);
+        })
     }
     return (
         (
             <div>
-            {/* {alert.show&&
-            <CustomAlert show={alert.show} message={alert.message} variant={alert.variant} severity={alert.sever}/>} */}
+            
                 <GridContainer>
- {/************************** confirmation container  *********************/}
- { !confirmation && <GridItem xs={12} sm={12} md={12}>
+                    {/************************** confirmation container  *********************/}
+                    {!confirmation && <GridItem xs={12} sm={12} md={12}>
                         <Card>
                             <CardHeader color="danger">
                                 <h4 className={classes.cardTitleWhite}>تاییدیه کلاس</h4>
@@ -188,14 +209,14 @@ export default function UserProfile(prop) {
                                     <Button
                                         className={classes.btn}
                                         color="info"
-                                     onClick={()=>handlerconfirmation(true)}
+                                        onClick={() => handlerconfirmation(true)}
                                     >
                                         بله
                                     </Button>
                                     <Button
                                         className={classes.btn}
                                         color="danger"
-                                     onClick={()=>handlerconfirmation(false)}
+                                        onClick={() => handlerconfirmation(false)}
                                     >
                                         خیر!!!
                                     </Button>
@@ -203,8 +224,8 @@ export default function UserProfile(prop) {
                             </CardFooter>
                         </Card>
                     </GridItem>
-}
-{/* --------------------------------------------------------------------------- */}
+                    }
+                    {/* --------------------------------------------------------------------------- */}
                     <GridItem xs={12} sm={12} md={12}>
                         <Card profile>
                             <CardBody profile color="primary">
@@ -212,7 +233,7 @@ export default function UserProfile(prop) {
                             </CardBody>
                         </Card>
                     </GridItem>
-                   
+
                     {/******************************* Profile container **********************/}
                     <GridItem xs={12} sm={12} md={12}>
                         <Card>
@@ -373,14 +394,45 @@ export default function UserProfile(prop) {
                             </CardHeader>
                             <CardBody>
                                 <GridContainer>
-                                <h5 className={classes.cardTitle}>برنامه کلاسی</h5>
+                                    <h5 className={classes.cardTitle}>برنامه کلاسی</h5>
 
                                     <GridItem xs={12} sm={12} md={12}>
+                                        <div className={classes.tableResponsive}>
+                                            {daysOfWeek.map((day, key) => {
+                                                return <GridItem xs={12} sm={12} md={12} key={key}  >
+                                                    <GridItem xs={12} sm={12} md={12} justifyContentStart>
+                                                        <h5 className={classes.cardTitle}>{day}</h5>
+                                                        {schedule && schedule.map((sche, key) => {
+                                                            if (sche.day == day) {
+                                                                return <CustomChip className={classes.customChips} label={PN.convertEnToPe(sche.time)} key={key} color="primary" />
+                                                            }
+                                                        })}
+                                                    </GridItem>
+                                                    <hr />
+                                                </GridItem>
+                                            })}
+                                        </div>
+                                        <CustomFab size="small" color="secondary" label="add" onClick={() => setOpenScheduleModal(true)}>
+                                            <AddIcon />
+                                        </CustomFab>
+                                        <CustomModal open={openScheduleModal} close={() => setOpenScheduleModal(false)}>
+                                            <AddScheduleModal classes={classes} schedule={(s)=>{schedule.push(s);setOpenScheduleModal(false)}}/>
+                                        </CustomModal>
                                     </GridItem>
                                     <Divider />
                                     <h5 className={classes.cardTitle}>لیست افراد</h5>
                                     <GridItem xs={12} sm={12} md={12}>
-                                       <UserTable />
+                                        <div className={classes.tableResponsive}>
+                                            <UserTable columns={Columns(users)} data={students} />
+                                        </div>
+                                        <CustomFab size="small" color="secondary" label="add" onClick={() => setOpenStudentModal(true)}>
+                                            <AddIcon />
+                                        </CustomFab>
+                                        <CustomModal open={openStudentModal} close={() => setOpenStudentModal(false)}>
+
+                                            <AddStudentModal classes={classes} submit={(nCode) =>{addStudentHandler(nCode);setOpenStudentModal(false)}}/>
+                                        </CustomModal>
+
                                     </GridItem>
                                 </GridContainer>
                             </CardBody>
@@ -521,7 +573,7 @@ export default function UserProfile(prop) {
                             </CardFooter>
                         </Card>
                     </GridItem>
-                    
+
                 </GridContainer>
             </div>)
     );

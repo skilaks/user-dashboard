@@ -16,8 +16,8 @@ export const lessonsDataSample = [
         interestRates: '',
         netProfit: '',
         depositTeacher: '',
-        schedule: [{ day: 'شنبه', time: '8 تا 10' }, { day: 'یک شنبه', time: '12 تا 13' }, { day: 'پنج شنبه', time: '10 تا 12' }],
-        students: []
+        schedule: [{ day: 'شنبه', time: '8 تا 10' },{ day: 'شنبه', time: '14 تا 16' }, { day: 'یک شنبه', time: '12 تا 13' }, { day: 'پنج شنبه', time: '10 تا 12' }],
+        students: [{ nCode: '0923687602', scoreLesson: '20', scoreTeacher: '20', numberOfAbsences: '0' }]
     },
     {
         code: '02',

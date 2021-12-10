@@ -20,7 +20,7 @@ const [columns,setColumns] = useState(Columns(lessonsName,nationalCodeUser));
     UserLessons.forEach((lesson, index) => {
 
       LessonService.getLessonByCode(lesson.code, (les) => {
-          array[index] =les
+          array[index] =les 
           return setLesson(array)
       })
 

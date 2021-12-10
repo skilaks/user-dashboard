@@ -1,6 +1,7 @@
 import React from "react";
-import { Tag, Badge,Space } from "antd"
+import { Tag, Badge, Space } from "antd"
 import { withStyles } from '@material-ui/core/styles';
+import CustomChip from "components/Chip/CustomChip.js"
 import PN from "persian-number"
 import { Link } from 'react-router-dom'
 const CustomTag = withStyles({
@@ -17,11 +18,11 @@ export default function Columns(type) {
             key: "firstName",
             render: (text, record) => {
                 return (<>
-  
+
                     <Badge dot={text.newTasks} />
 
                     {text.firstName}
-           
+
                 </>
 
 
@@ -38,50 +39,44 @@ export default function Columns(type) {
             dataIndex: "age",
             key: "age",
             render: (age) =>
-                    <>
-                        {PN.convertEnToPe(age)}
-                    </>
-            
+                <>
+                    {PN.convertEnToPe(age)}
+                </>
+
         },
         {
             title: "نوع کاربری",
             key: "typeOfUser",
             dataIndex: "typeOfUser",
-            render: (typeOfUsers) => (
-                <>
-                    {typeOfUsers.map((typeOfUser) => {
-                        let color = typeOfUser.length > 4 ? "blue" : "green";
+            render: (typeOfUser) => {
 
-                        if (typeOfUser === "دانشجو") {
-                            color = "volcano";
-                        }
-                        return (<>
-                            <Tag color={color} key={typeOfUser}>
-                                {typeOfUser}
-                            </Tag>
+                let text = (typeOfUser == 'student') ? 'دانش آموز' : 'مدرس';
 
-                        </>
-                        );
-                    })}
+                return (<>
+                    <CustomChip color='primary' label={text} key={typeOfUser}/>
+                        
+                  
+
                 </>
-            ),
+                );
+            }
 
         },
         {
             title: "عملیات",
             key: "action",
             render: (text, record) =>
-                    <>
-                <Link
-                    to={"/userProfile/" + text.id}
-                >
-                    پروفایل
-                    {  ! text.confirmation &&   <Tag color="red" >نیاز به تایید</Tag>}
+                <>
+                    <Link
+                        to={"/userProfile/" + text.id}
+                    >
+                        پروفایل
+                        {!text.confirmation && <Tag color="red" >نیاز به تایید</Tag>}
 
-                </Link>
-               
-                  </>
-                    
+                    </Link>
+
+                </>
+
             ,
         },
     ];

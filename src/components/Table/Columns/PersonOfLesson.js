@@ -1,5 +1,5 @@
 import React from "react";
-import { Tag, Badge,Space } from "antd"
+import { Tag, Badge, Space } from "antd"
 import { withStyles } from '@material-ui/core/styles';
 import PN from "persian-number"
 import { Link } from 'react-router-dom'
@@ -7,8 +7,8 @@ const CustomTag = withStyles({
     root: { borderRadius: '10px', }
 
 })((props) => <Tag  {...props} />);
-export default function PersonOfLesson(user) {
-
+export default function PersonOfLesson(users) {
+    console.log('here is a person of lessons')
     const columns = '';
     const All = [
         {
@@ -17,11 +17,13 @@ export default function PersonOfLesson(user) {
             key: "firstName",
             render: (text, record) => {
                 return (<>
-  
-                    <Badge dot={text.newTasks} />
 
-                    {text.firstName}
-           
+                    {users.map(user => {
+                        if (user.nationalCode == text.nCode) {
+                            return user.firstName
+                        }
+                    })}
+
                 </>
 
 
@@ -30,73 +32,80 @@ export default function PersonOfLesson(user) {
         },
         {
             title: "نام خانوادگی",
-            dataIndex: "lastName",
             key: "lastName",
+            render: (text, record) => {
+                return (<>
+                    {users.map(user => {
+                        if (user.nationalCode == text.nCode) {
+                            return user.lastName
+                        }
+                    })}
+                </>)
+            }
         },
         {
             title: "سن",
-            dataIndex: "age",
             key: "age",
-            render: (age) =>
-                    <>
-                        {PN.convertEnToPe(age)}
-                    </>
-            
+            render: (text, record) => {
+                return <>
+                    {users.map(user => {
+                        if (user.nationalCode == text.nCode) {
+                            return PN.convertEnToPe(user.age)
+                        }
+                    })}
+                </>
+            }
+
+
         },
         {
             title: "نمره درس",
 
             key: "scoreLesson",
-            sorter: (a, b) => {console.log(a,b)},
-            render: (text) =>
-
-            (<>{
-
-                // text.students.map((student) => {
-                //     if (student.nCode == nationalCodeUser) {
-                //         return <h5>{PN.convertEnToPe(student.scoreLesson)}</h5>
-                //     }
-                // })
-
-            }</>)
-
+            sorter: (a, b) => { console.log(a, b) },
+            render: (text) => {
+                return (<>{
+                    PN.convertEnToPe(text.scoreLesson)
+                }</>)
+            }
         },
 
         {
             title: "تعداد جلسات غایب",
 
             key: "scoreLesson",
-            sorter: (a, b) => {console.log(a,b)},
-            render: (text) =>
+            sorter: (a, b) => { console.log(a, b) },
+            render: (text) => {
+                return (<>{
 
-            (<>{
+                    PN.convertEnToPe(text.numberOfAbsences)
 
-                // text.students.map((student) => {
-                //     if (student.nCode == nationalCodeUser) {
-                //         return <h5>{PN.convertEnToPe(student.numberOfAbsences)}</h5>
-                //     }
-                // })
-
-            }</>)
+                }</>)
+            }
 
         },
-       
+
         {
             title: "عملیات",
             key: "action",
             render: (text, record) =>
-                    <>
-                <Link
-                    to={"/userProfile/" + text.id}
-                >
-                    پروفایل
-                    {  ! text.confirmation &&   <Tag color="red" >نیاز به تایید</Tag>}
+                <>
+                      {users.map(user => {
+                        if (user.nationalCode == text.nCode) {
+                            return (<Link
+                                to={"/userProfile/" + user.id}
+                            >
+                                پروفایل
+                                {!user.confirmation && <Tag color="red" >نیاز به تایید</Tag>}
+        
+                            </Link>)
+                        }
+                    })}
 
-                </Link>
-               
-                  </>
-                    
+                </>
+
             ,
         },
     ];
+    return All;
 }
