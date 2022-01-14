@@ -28,6 +28,13 @@ const cardStyle = {
   cardProfile: {
     marginTop: "30px",
     textAlign: "center",
+
+  },
+  cardProfileNonebackground:{
+    marginTop: "30px",
+    textAlign: "center",
+    background: "none",
+    boxShadow: "none",
   },
   cardChart: {
     "& p": {

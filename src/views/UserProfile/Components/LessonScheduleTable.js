@@ -20,7 +20,7 @@ import { LessonService } from '../../../Services/LessonService.js'
 import { refType } from '@mui/utils';
 const useStyles = makeStyles(styles);
 const days = ['شنبه', 'یک شنبه', 'دو شنبه', 'سه شنبه', 'چهار شنبه', 'پنج شنبه']
-const tags = ['ریاضی1- 10 صبح', 'tag2', 'tag3', 'tag4']
+
 export default function LessonScheduleTable(prop) {
     const classes = useStyles();
     const { Lessons } = prop;

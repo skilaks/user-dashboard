@@ -282,6 +282,7 @@ const sidebarStyle = (theme) => ({
     },
   },
   sidebarWrapper: {
+  marginTop:'auto',
     position: "relative",
     height: "calc(100vh - 75px)",
     overflow: "auto",

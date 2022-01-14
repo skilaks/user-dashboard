@@ -25,6 +25,17 @@ const cardAvatarStyle = {
     "&$cardAvatarPlain": {
       marginTop: "0",
     },
+    "&:hover": {
+      backgroundColor:'red'
+    }
+  },
+  cardAvatarNoneBackground: {
+    marginLeft: '0 !important',
+    zIndex: 100,
+    marginBottom: '-3rem',
+    marginRight:" auto",
+    marginTop: "-5rem",
+
   },
   cardAvatarPlain: {},
 };

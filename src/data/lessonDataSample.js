@@ -36,7 +36,7 @@ export const lessonsDataSample = [
         netProfit: '',
         depositTeacher: '',
         schedule: [{ day: 'شنبه', time: '8 تا 10' }, { day: 'سه شنبه', time: '14 تا 16' }],
-        students: []
+        students: [{ nCode: '0923687602', scoreLesson: '20', scoreTeacher: '20', numberOfAbsences: '0' }]
     },
     {
         code: '03',

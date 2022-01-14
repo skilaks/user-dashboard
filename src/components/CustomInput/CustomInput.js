@@ -20,6 +20,7 @@ export default function CustomInput(props) {
     formControlProps,
     labelText,
     endAdornment,
+    startAdornment,
     id,
     value,
     labelProps,
@@ -74,6 +75,7 @@ export default function CustomInput(props) {
           underline: underlineClasses,
         }}
         endAdornment={endAdornment}
+        startAdornment={startAdornment}
         type={type}
         onChange={onChange}
         id={id}
@@ -97,7 +99,8 @@ CustomInput.propTypes = {
   inputProps: PropTypes.object,
   value: PropTypes.string,
   formControlProps: PropTypes.object,
-  endAdornment : PropTypes.string,
+  endAdornment : PropTypes.object,
+  startAdornment : PropTypes.object,
   error: PropTypes.bool,
   success: PropTypes.bool,
   onChange: PropTypes.func,

@@ -9,6 +9,20 @@ const rtlStyle = {
   successText: {
     color: successColor[0],
   },
+  bgLight:{
+    backgroundColor: '#f8f9fc !important',
+  },
+  formSignin :{
+    width: '100%',
+    maxWidth: '500px',
+    padding: '1rem',
+    // margin: 'auto',
+    marginTop: '8rem'
+   
+  },
+  imgInherit: {
+    width: 'inherit'
+  },
   upArrowCardCategory: {
     width: "16px",
     height: "16px",
@@ -114,8 +128,13 @@ const rtlStyle = {
     overflowX: "auto",
   },
   customChips: {
-    marginLeft:'10px'
+    marginLeft:'10px',
+    
+  },
+  selectionLessonHeighte: {
+    height: "25rem"
   }
+
 };
 
 export default rtlStyle;

@@ -6,7 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 const ChipWithStyle = withStyles({
   root: {
-    fontFamily:' "Yekan", "Helvetica", "Arial"," sans-serif"'
+    fontFamily:' "Yekan", "Helvetica", "Arial"," sans-serif"',
+    
   }
 })((props) => <Chip  {...props} />);
 
@@ -18,7 +19,7 @@ export default  function  CustomChip(props) {
 
   return (
 
-      <ChipWithStyle variant="outlined"  label={label} color={color||'info'} avatar={avatar||null} icon={icon||null} {...rest}  />
+      <ChipWithStyle variant="outlined" color={color||'primary'} label={label}  avatar={avatar||null} icon={icon||null} {...rest}  />
     
   );
 }

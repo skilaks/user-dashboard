@@ -2,6 +2,7 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 import { Tag, Button } from "antd"
 import PN from "persian-number"
+import CustomChip from 'components/Chip/CustomChip.js'
 import {
     SyncOutlined,
     ClockCircleOutlined,
@@ -28,10 +29,7 @@ export default function Columns(lessons) {
             title: "نام درس",
             dataIndex: "lessonName",
             key: "lessonName",
-            filters:
-                lessons.map((lesson, index) => { return { text: lesson.name, value: lesson.name } })
-
-            ,
+            // filters:lessons.map((lesson, index) => { return { text: lesson.name, value: lesson.name } }) ,
             onFilter: (value, record) => record.name.indexOf(value) === 0,
             sorter: (a, b) => a.lessonName.length - b.lessonName.length,
             sortDirections: ['descend'],

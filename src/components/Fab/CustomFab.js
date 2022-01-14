@@ -7,7 +7,7 @@ const styles = {
 
     positionFixed:{
         position: 'fixed',
-        bottom: '50px',
+        bottom: '200px',
        
     },
 

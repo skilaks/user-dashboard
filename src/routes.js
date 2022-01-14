@@ -24,49 +24,82 @@ import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import LocationOn from "@material-ui/icons/LocationOn";
 import Notifications from "@material-ui/icons/Notifications";
 import ClassIcon from "@material-ui/icons/Class";
+import PaymentIcon from '@mui/icons-material/Payment';
 import Language from "@material-ui/icons/Language";
 // core components/views for Admin layout
 // import DashboardPage from "views/Dashboard/Dashboard.js";
-import SelfProfile from "views/UserProfile/SelfProfile.js";
+import Profile from "views/Student/Profile/Profile.js";
+import Education from "views/Student/Education/Education.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
 import LessonProfle from "views/LessonProfile/LessonProfile.js"
 import TableList from "views/UsersList/UsersList.js";
 import LessonList from "views/LessonList/LessonList.js";
-import Typography from "views/Typography/Typography.js";
-import Icons from "views/Icons/Icons.js";
-import Maps from "views/Maps/Maps.js";
-import NotificationsPage from "views/Notifications/Notifications.js";
+import Lessons from "views/Student/Lessons/Lessons.js";
+import LoginAndRegister from "views/LoginAndRegister/LoginAndRegister";
+
+
 // import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
 // core components/views for RTL layout
-import RTLPage from "views/RTLPage/RTLPage.js";
+
 
 const dashboardRoutes = [
+  // {
+  //   path: "/dashboard",
+  //   name: "داشبورد",
+  //   rtlName: "داشبورد",
+  //   icon: Dashboard,
+  //   component: RTLPage,
+  //   layout: "",
+  //   sidbarShow: true
+  // },
   {
-    path: "/dashboard",
-    name: "داشبورد",
-    rtlName: "داشبورد",
-    icon: Dashboard,
-    component: RTLPage,
+    path: "/login",
+    name: "loginForm",
+    rtlName: "ورود",
+    icon: Person,
+    component:LoginAndRegister,
     layout: "",
-    sidbarShow: true
+    sidbarShow:false
+
   },
   {
-    path: "/selfProfile",
+    path: "/profile",
     name: "پروفایل",
     rtlName: "پروفایل",
     icon: Person,
-    component: SelfProfile,
+    component: Profile,
     layout: "",
-    sidbarShow:false
+    sidbarShow:true
 
   },
   {
-    path: "/userProfile/:id",
-    name: "پروفایل",
-    rtlName: "پروفایل",
-    component: UserProfile,
-    sidbarShow:false
+    path: "/education",
+    name: "آموزش",
+    rtlName: "آموزش",
+    icon: ClassIcon,
+    component: Education,
+    layout: "",
+    sidbarShow:true
+
   },
+  {
+    path: "/lessons",
+    name: "دروس",
+    rtlName: "دروس",
+    icon: ClassIcon,
+    component: Lessons,
+    layout: "",
+    sidbarShow:true
+
+  },
+
+  // {
+  //   path: "/userProfile/:id",
+  //   name: "پروفایل",
+  //   rtlName: "پروفایل",
+  //   component: UserProfile,
+  //   sidbarShow:false
+  // },
   {
     path: "/lessonProfile/:id",
     name: " پروفایل درس",
@@ -75,26 +108,36 @@ const dashboardRoutes = [
     sidbarShow:false
   },
 
-  {
-    path: "/userList",
-    name: "Table List",
-    rtlName: "لیست کاربران",
-    icon: PeopleAltIcon,
-    component: TableList,
-    layout: "",
-    sidbarShow: true
+  // {
+  //   path: "/userList",
+  //   name: "Table List",
+  //   rtlName: "لیست کاربران",
+  //   icon: PeopleAltIcon,
+  //   component: TableList,
+  //   layout: "",
+  //   sidbarShow: true
 
-  },
-  {
-    path: "/lessonList",
-    name: "لیست دروس ",
-    rtlName: "لیست دروس",
-    icon: ClassIcon,
-    component: LessonList,
-    layout: '',
-    sidbarShow: true
+  // },
+  // {
+  //   path: "/lessonList",
+  //   name: "لیست دروس ",
+  //   rtlName: "لیست دروس",
+  //   icon: ClassIcon,
+  //   component: LessonList,
+  //   layout: '',
+  //   sidbarShow: true
 
-  },
+  // },
+  // {
+  //   path: "/financial",
+  //   name: "مالی",
+  //   rtlName: "مالی",
+  //   icon: PaymentIcon ,
+  //   component: LessonList,
+  //   layout: '',
+  //   sidbarShow: true
+
+  // },
   // {
   //   path: "/typography",
   //   name: "Typography",

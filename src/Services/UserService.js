@@ -11,14 +11,21 @@ export const UserService = {
         callback(DataSample)
         //-----------------------------
     },
-    getUserById: (id, callback) => {
-        //get  user from the Server
+    getUserData: ( callback) => {
+        //---------------get profile from server--------------------
 
-        //--------method just for testing purposes--------
-        DataSample.filter(user => {
-            if (user.id === id)
-                callback(user)
-        })
+        //--------------------------
+        
+        callback(DataSample[0]);
+        
+        
+    },
+
+    updateProfile: ( user,callback) => {
+        //---------------update profile to server--------------------
+
+        ///----------------
+        callback({message:'کاربر با موفقیت آپدیت شد!'})
     },
     getUserByNationalCode: (nCode, callback) => {
         //get  user from the Server
@@ -56,9 +63,9 @@ export const UserService = {
         //-----sample--------------
         callback(UserFinancially)
     },
-    getUserFinanciallyByNcode: (nCode,callback) => {
-        UserFinancially.filter(data =>{
-            if(data.nationalCode==nCode){
+    getUserFinanciallyByNcode: (nCode, callback) => {
+        UserFinancially.filter(data => {
+            if (data.nationalCode == nCode) {
                 callback(data)
             }
         })

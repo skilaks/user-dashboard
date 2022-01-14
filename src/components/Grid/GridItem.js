@@ -10,12 +10,12 @@ import Grid from "@material-ui/core/Grid";
 const styles = {
   grid: {
     padding: "0 15px !important",
-    marginLeft: "auto !important",
+   
   },
   justifyContentCenter : {
     display: "flex",
     justifyContent : "center",
-    marginLeft: "auto !important",
+    
   },
   justifyContentEnd:{
     display: "flex",

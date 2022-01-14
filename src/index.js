@@ -18,22 +18,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
+import { Provider } from 'react-redux';
 // core components
-// import Admin from "layouts/Admin.js";
 import RTL from "layouts/RTL.js";
-
+//----------------------------------------------------------------
+import {userStore} from "./Services/redux"
 
 import "assets/css/material-dashboard-react.css?v=1.10.0";
 
 ReactDOM.render(
   <BrowserRouter>
-    <Switch>
-      {/* <Route path="/admin" component={Admin} /> */}
-      <Route path="/" component={RTL} />
-      {/* <Redirect from="/" to="/admin/dashboard" /> */}
-     
-    </Switch>
+    <Provider store={userStore}>
+      <Switch>
+        <Route path="/" component={RTL} />
+      </Switch>
+    </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );

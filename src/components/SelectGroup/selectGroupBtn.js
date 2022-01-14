@@ -34,7 +34,12 @@ const Label = withStyles({
 //*********************End Style******************************/
 export default function SelectGroupBtn(props) {
   const { Radios, Value ,...rest } = props;
+  
   const [value, setValue] = React.useState('all');
+
+  const setValueHandler = (value) =>{
+    props.Value(value);
+  }
   return (
     <Form>
       <Group aria-label="gender" name="gender1" value={value} onChange={e => { Value(e.target.value); setValue(e.target.value) }} {...rest}>

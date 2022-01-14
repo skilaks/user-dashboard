@@ -33,14 +33,31 @@ const customInputStyle = {
       borderColor: successColor[0],
     },
   },
+  textField: {
+    '& textarea':{...defaultFont,
+    }
+  },
+  labelTextFiedl:{
+    '& label':{
+      ...defaultFont,
+    
+      color: grayColor[3] + " !important",
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "1.42857",
+      letterSpacing: "unset",
+    }
+  },
   labelRoot: {
     ...defaultFont,
+    
     color: grayColor[3] + " !important",
     fontWeight: "400",
     fontSize: "14px",
     lineHeight: "1.42857",
     letterSpacing: "unset",
   },
+
   labelRootError: {
     color: dangerColor[0],
   },
